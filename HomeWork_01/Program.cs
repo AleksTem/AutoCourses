@@ -11,14 +11,9 @@ namespace HomeWork_01
     {
         static void Main(string[] args)
         {
-            Square square;
-            Console.Write("Square side:");
-            string input = Console.ReadLine();
-            Double.Parse(input)
-
+            Console.WriteLine($"Square area: {new SquareFactory().Create().Area()}");
+            Console.WriteLine($"Circle area: {new CircleFactory().Create().Area()}");
             Console.ReadKey();
-        }
-
-        
+        }        
     }
 }

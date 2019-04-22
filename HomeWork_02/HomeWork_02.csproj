@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E166C163-2EE3-4BF9-8895-0F55F5C71442}</ProjectGuid>
+    <ProjectGuid>{93B4C6B6-8668-4056-8B2E-0F53D4BB8B5B}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Task_01</RootNamespace>
-    <AssemblyName>Task_01</AssemblyName>
+    <RootNamespace>HomeWork_02</RootNamespace>
+    <AssemblyName>HomeWork_02</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,14 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Figures\Circle.cs" />
-    <Compile Include="Figures\Shape.cs" />
-    <Compile Include="Figures\Square.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HomeWork_01\HomeWork_01.csproj">
+      <Project>{e166c163-2ee3-4bf9-8895-0f55f5c71442}</Project>
+      <Name>HomeWork_01</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
