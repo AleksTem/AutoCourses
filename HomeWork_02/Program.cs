@@ -9,8 +9,20 @@ namespace HomeWork_02
         {
             var squareSide = new SquareFactory().Create().Parameter;
             var circleRadius = new CircleFactory().Create().Parameter;
-            string result = squareSide > 2 * circleRadius
-                ? "Circle fit in a square" : "Square fit in a circle";                
+
+            string result;
+            if (squareSide > 2 * circleRadius)
+            {
+                result = "Circle fit in a square";
+            }
+            else if (Math.Sqrt(2) * squareSide / 4 < circleRadius)
+            {
+                result = "Square fit in a circle";
+            }
+            else
+            {
+                result = "Figures intersect";
+            }
             Console.WriteLine(result);
             Console.ReadKey();
         }
