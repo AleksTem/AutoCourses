@@ -1,2 +1,2 @@
-# Oleksandr Kovalenko's Homeworks
+# Homeworks
 Solving tasks for Automation testing C# Course
