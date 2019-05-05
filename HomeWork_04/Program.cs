@@ -1,8 +1,5 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HomeWork_04
 {
@@ -10,22 +7,28 @@ namespace HomeWork_04
     {
         static void Main(string[] args)
         {
-            char[] temp;
-            string word;
-            Console.WriteLine("Введите тестируемое на \"палиндромность\" слово");
-            word = Console.ReadLine();
-            temp = word.ToCharArray();
-            Array.Reverse(temp);
-            var dd = temp.ToString();
-            if (dd.Equals(word))
-            {
-                Console.WriteLine("Это палиндром");
-            }
+            Console.WriteLine("Дайте словечко");
+            string input = Console.ReadLine();
+            LinkedList<char> chars = new LinkedList<char>(input);
+            if (CheckForPalindrome(chars))
+                Console.WriteLine($"Слово \"{input}\" является палиндромом.");
+            else
+                Console.WriteLine($"Слово \"{input}\" не является палиндромом.");
+            Console.ReadKey();
+        }
+
+        private static bool CheckForPalindrome(LinkedList<char> chars)
+        {
+            if (chars.Count <= 1)
+                return true;
+            else if (!chars.First.Value.Equals(chars.Last.Value))
+                return false;
             else
             {
-                Console.WriteLine("Это не палиндром");
+                chars.RemoveFirst();
+                chars.RemoveLast();
+                return CheckForPalindrome(chars);
             }
-            Console.ReadKey();
         }
     }
 }
