@@ -66,7 +66,7 @@ namespace HomeWork_05.CustomEntities
             return sb.ToString();
         }
 
-        internal override string ToString()
+        public override string ToString()
         {
             return $"=====\nTask:{Description}\n Priority: {Enum.GetName(typeof(Priority), Priority)}" +
                 $"\n Complexity: {Enum.GetName(typeof(Complexity), Complexity)}\n=====\n";
