@@ -1,19 +1,27 @@
-﻿using System;
+﻿
+
+using HomeWork_05.CustomEnums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static HomeWork_05.CustomDefinitions;
 
-namespace HomeWork_05
+namespace HomeWork_05.CustomEntities
 {
-    class Schedule
+    internal class Schedule
     {
+        #region Fields
+
         private List<Task> _tasks;
         private TaskFactory _factory;
+        #endregion Fields
 
+        #region Properties
         public int TotalHours { get; private set; }
 
+        #endregion Properties
+
+
+        #region Constructors
         public Schedule()
         {
             _tasks = new List<Task>();
@@ -21,7 +29,11 @@ namespace HomeWork_05
             TotalHours = 0;
         }
 
-        public void AddTask()
+        #endregion Constructors
+
+
+        #region Methods
+        public void AddNewTask()
         {
             Task task = _factory.Create();
             _tasks.Add(task);
@@ -38,7 +50,7 @@ namespace HomeWork_05
                 Console.WriteLine(task);
         }
 
-        public void SelectTotalTimeForTasks()
+        public void GetTotalTimeForTasks()
         {
             Console.WriteLine($"Total time for tasks: {TotalHours} hours.\n");
         }
@@ -56,7 +68,7 @@ namespace HomeWork_05
                 else return 0;
             });
             Console.WriteLine("Possible complete next tasks:");
-            for(int i = 0; i < _tasks.Count; i++)
+            for (int i = 0; i < _tasks.Count; i++)
             {
                 availableHours -= (int)_tasks[i].Complexity;
                 if (availableHours > 0)
@@ -71,5 +83,7 @@ namespace HomeWork_05
             for (int i = 0; i < _tasks.Count; i++)
                 Console.WriteLine(_tasks[i]);
         }
+
+        #endregion Methods
     }
 }

@@ -1,27 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Priority_Queue;
-using static HomeWork_05.CustomDefinitions;
+﻿using HomeWork_05.CustomEntities;
+using System;
 
 namespace HomeWork_05
 {
     class Program
     {
-        enum Complexity
+        public static void Main(string[] args)
         {
-            Low = 1,
-            Middle = 2,
-            High = 4
-        };
-
-        static void Main(string[] args)
-        {
-            var schedule = new Schedule();
+            Schedule schedule = new Schedule();
             string choice;
             PrintCommands();
             do
@@ -35,12 +21,12 @@ namespace HomeWork_05
                         PrintCommands();
                         break;
                     case "1":
-                        schedule.AddTask();
+                        schedule.AddNewTask();
                         break;
                     case "2":
-                        schedule.SelectTotalTimeForTasks();
+                        schedule.GetTotalTimeForTasks();
                         break;
-                    case "3":                        
+                    case "3":
                         schedule.SelectTasksByPriority();
                         break;
                     case "4":
@@ -52,7 +38,7 @@ namespace HomeWork_05
             } while (!choice.Equals("5"));
         }
 
-        static void PrintCommands()
+        internal static void PrintCommands()
         {
             Console.WriteLine("Available commands:");
             Console.WriteLine("0 - Print availiable commands");

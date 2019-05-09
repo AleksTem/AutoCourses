@@ -1,25 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
+using HomeWork_05.CustomEnums;
+using System;
 using System.Text;
-using System.Threading.Tasks;
-using static HomeWork_05.CustomDefinitions;
 
-namespace HomeWork_05
+namespace HomeWork_05.CustomEntities
 {
-    class Task
+    internal class Task
     {
+        #region Fields
         internal string Description { get; set; }
         internal Priority Priority { get; set; }
         internal Complexity Complexity { get; set; }
+        #endregion Fields
 
-        public Task()
+        #region Constructors
+        internal Task()
         {
             Description = RequestDescription();
             Priority = RequestPriority();
             Complexity = RequestComplexity();
         }
 
+        #endregion Constructors
+
+        #region Methods
         internal static string RequestDescription()
         {
             Console.WriteLine("Create New Task.");
@@ -33,7 +37,7 @@ namespace HomeWork_05
             bool outcome;
             do
             {
-                Console.Write($"Priority ({PrintDefinition<Priority>()})?: ");
+                Console.Write($"Priority ({PrintEnumDefinition<Priority>()})?: ");
                 string _pr = Console.ReadLine();
                 outcome = Enum.TryParse<Priority>(_pr, true, out result) & Enum.IsDefined(typeof(Priority), result);
             } while (!outcome);
@@ -47,17 +51,26 @@ namespace HomeWork_05
             bool outcome;
             do
             {
-                Console.Write($"Complexity ({PrintDefinition<Complexity>()})?: ");
+                Console.Write($"Complexity ({PrintEnumDefinition<Complexity>()})?: ");
                 string _c = Console.ReadLine();
                 outcome = Enum.TryParse<Complexity>(_c, true, out result) & Enum.IsDefined(typeof(Complexity), result);
             } while (!outcome);
             return result;
         }
 
-        public override string ToString()
+        internal static string PrintEnumDefinition<T>()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (int index in Enum.GetValues(typeof(T)))
+                sb.Append($"{index}={Enum.GetName(typeof(T), index)} ");
+            return sb.ToString();
+        }
+
+        internal override string ToString()
         {
             return $"=====\nTask:{Description}\n Priority: {Enum.GetName(typeof(Priority), Priority)}" +
                 $"\n Complexity: {Enum.GetName(typeof(Complexity), Complexity)}\n=====\n";
         }
+        #endregion Methods
     }
 }
