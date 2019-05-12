@@ -2,28 +2,15 @@
 
 namespace HomeWork_06.Bulbs
 {
-    internal class ColoredBulb : PlainBulb
+    internal class ColoredBulb : Bulb
     {
-        #region Fields
         private BulbColor _color;
 
-        #endregion Fields
-
-        #region Properties
         public string Color => Enum.GetName(typeof(BulbColor), _color);
 
-        #endregion Properpies
-
-        #region Constructors
-
-        public ColoredBulb(BulbColor color)
+        public ColoredBulb(BulbColor color, int index) : base (index)
         {
             _color = color;
         }
-
-        #endregion Constructors
-
-        #region Methods
-        #endregion Methods
     }
 }

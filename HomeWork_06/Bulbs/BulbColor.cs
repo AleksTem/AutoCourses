@@ -2,9 +2,10 @@
 {
     internal enum BulbColor
     {
-        Red = 1,
-        Yellow = 2,
-        Green = 3,
-        Blue = 4
+        NoColor,
+        Red,
+        Yellow,
+        Green,
+        Blue
     }
 }

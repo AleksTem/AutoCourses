@@ -6,20 +6,31 @@ namespace HomeWork_06.Garlands
 {
     class ColoredGarland : BaseGarland
     {
-        private List<ColoredBulb> _coloredGarland;
-        public ColoredGarland(int garlandLength)
+        private ColoredBulb[] _garland;
+        
+        public ColoredGarland(int garlandLength) : base (garlandLength)
         {
-            _coloredGarland = new List<ColoredBulb>(garlandLength);
-            for (j = 1; j <= 4)
-                for (int i = Enum. ; i < garlandLength; i += 4)
+            _garland = new ColoredBulb[garlandLength];
+            int bulbColors = Enum.GetValues(typeof(BulbColor)).Length;
+            int step = bulbColors - 1;
+
+            for (int j = 1; j < bulbColors; j++)
+            {
+                BulbColor color = Enum.IsDefined(typeof(BulbColor), j) ? (BulbColor)j : BulbColor.NoColor;
+                for (int i = j-1; i < garlandLength; i += step)
                 {
-                    var color =
-                        i % 4 == 0 ? BulbColor.Blue :
-                        i % 3 == 0 ? BulbColor.Green :
-                        i % 2 == 0 ? BulbColor.Yellow :
-                        BulbColor.Red;
-                    _coloredGarland[i] = new ColoredBulb(color);
+                    _garland[i] = new ColoredBulb(color, i);
                 }
+            }            
+        }
+
+        public override void PrintGarlandsStatus(bool evenMinute)
+        {
+            Console.WriteLine("Colored garland:");
+            foreach (ColoredBulb x in _garland)
+            {
+                Console.WriteLine($"Bulb { x.Index } ({x.Color}) is {x.GetStatus(evenMinute)}");
+            }
         }
     }
 }
