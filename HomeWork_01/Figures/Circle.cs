@@ -6,17 +6,10 @@ namespace HomeWork_01.Figures
     {
         private const double Pi = Math.PI;
 
-        public Circle()
-        {
-            Console.WriteLine("Circle radius ?");
-            var radius = Double.Parse(Console.ReadLine());
-            new Circle(radius);
-        }
-
         public Circle(double radius) : base(radius)
         {
         }
 
-        public override double Area() => Pi * Parameter;
+        public override double Area() => Math.Round(Pi * Parameter, 2);
     }
 }

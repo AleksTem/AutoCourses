@@ -8,6 +8,6 @@ namespace HomeWork_01.Figures
         {
         }
 
-        public override double Area () => Parameter * Parameter;
+        public override double Area() => Math.Round(Parameter * Parameter, 2);
     }
 }

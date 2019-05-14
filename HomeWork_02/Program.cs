@@ -1,9 +1,9 @@
-﻿using System;
-using HomeWork_01.Figures;
+﻿using HomeWork_01.Figures;
+using System;
 
 namespace HomeWork_02
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -11,14 +11,17 @@ namespace HomeWork_02
             var circleRadius = new CircleFactory().Create().Parameter;
 
             string result;
-            if (squareSide > 2 * circleRadius)
+            //Круг вписан в квадрат
+            if (squareSide >= 2 * circleRadius)
             {
-                result = "Circle fit in a square";
+                result = "Circle inscribed in square";
             }
-            else if (Math.Sqrt(2) * squareSide / 4 < circleRadius)
+            //Круг описан вокруг квадрата
+            else if (Math.Round(Math.Sqrt(2) / 2 * squareSide, 2) <= circleRadius)
             {
-                result = "Square fit in a circle";
+                result = "The circle described around the square";
             }
+            //Фигуры пересекаются
             else
             {
                 result = "Figures intersect";
