@@ -8,16 +8,16 @@ namespace HomeWork_01.Figures
 
         public override Shape Create()
         {
-            double shapeRadius;
+            double circleRadius;
             int tryCounter = RetryCount;
             bool result = false;
             do
             {
                 Console.WriteLine("Enter \"Circle radius\" from 0 to 32000: ");
-                result = double.TryParse(Console.ReadLine(), out shapeRadius) && shapeRadius > 0 && shapeRadius <= 32000;
+                result = double.TryParse(Console.ReadLine(), out circleRadius) && circleRadius > 0 && circleRadius <= 32000;
                 tryCounter--;
             } while (!result && tryCounter > 0);
-            return new Circle(shapeRadius);
+            return new Circle(circleRadius);
         }
     }
 }
