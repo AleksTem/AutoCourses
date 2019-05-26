@@ -18,7 +18,7 @@ namespace HomeWork_07
 
         public CountriesDictionary(string fileName)
         {
-            _dictionary = CountryReader(fileName);
+            _dictionary = ReadCountriesFromFile(fileName);
         }
 
         public void Add(string country)
@@ -46,7 +46,7 @@ namespace HomeWork_07
             return ((IEnumerable<KeyValuePair<int, Country>>)_dictionary).GetEnumerator();
         }
 
-        private static Dictionary<int, Country> CountryReader(string FileName)
+        private static Dictionary<int, Country> ReadCountriesFromFile(string FileName)
         {
             string countriesPath = Path.Combine(AppContext.BaseDirectory, @"..\..\Data\", FileName);
             return DictionaryReader(countriesPath);
