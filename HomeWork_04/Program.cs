@@ -1,34 +1,57 @@
 using System;
-using System.Collections.Generic;
 
 namespace HomeWork_04
 {
     class Program
     {
+        private const int RetryCount = 3;
         static void Main(string[] args)
         {
-            Console.WriteLine("Дайте словечко");
-            string input = Console.ReadLine();
-            LinkedList<char> chars = new LinkedList<char>(input);
-            if (CheckForPalindrome(chars))
-                Console.WriteLine($"Слово \"{input}\" является палиндромом.");
-            else
-                Console.WriteLine($"Слово \"{input}\" не является палиндромом.");
-            Console.ReadKey();
+            string choice;
+            Console.WriteLine("Check for Palindrom\n");
+            PrintCommands();
+            do
+            {
+                Console.Write("Command: ");
+                choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "0":
+                        PrintCommands();
+                        break;
+                    case "1":
+                        CheckPhraseOnPalindrom();
+                        break;
+                    case "2":
+                        break;
+                }
+            } while (!choice.Equals("2"));
         }
 
-        private static bool CheckForPalindrome(LinkedList<char> chars)
+        private static void PrintCommands()
         {
-            if (chars.Count <= 1)
-                return true;
-            else if (!chars.First.Value.Equals(chars.Last.Value))
-                return false;
+            Console.WriteLine("\nAvailable commands:");
+            Console.WriteLine("0 - Print availiable commands");
+            Console.WriteLine("1 - Check phrase for palindrome");
+            Console.WriteLine("2 - Exit");
+            Console.WriteLine();
+        }
+
+        private static void CheckPhraseOnPalindrom()
+        {
+            string inputPhrase = InputHelper.GetPhrase(RetryCount);
+            if (new PalindromAnalizer().CheckForPalindrome(inputPhrase))
+            {
+                Console.WriteLine($"Phrase \"{inputPhrase}\" is palindrome.");
+            }
             else
             {
-                chars.RemoveFirst();
-                chars.RemoveLast();
-                return CheckForPalindrome(chars);
+                Console.WriteLine($"Phrase \"{inputPhrase}\" is not a palindrome.");
             }
         }
+
+
+
     }
 }
