@@ -15,7 +15,7 @@ namespace HomeWork_04
                 Console.Write("Get a phrase:");
                 input = Console.ReadLine();
                 retryCount--;
-                if (input.Length > 2)//|| retryCount <= 0)
+                if (input.Length > 2)
                 {
                     inputCheck = false;
                     result = input;

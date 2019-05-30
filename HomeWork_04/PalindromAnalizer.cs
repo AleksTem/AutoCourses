@@ -11,7 +11,7 @@ namespace HomeWork_04
             {
                 return false;
             }
-            string phrase = CleanInput(input);
+            string phrase = CleanInput(input).ToLower();
             return Reverse(phrase).Equals(phrase);
         }
 
