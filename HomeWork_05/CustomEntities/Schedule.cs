@@ -62,12 +62,10 @@ namespace HomeWork_05.CustomEntities
             int availableHours = 8 * int.Parse(Console.ReadLine());
             _tasks.Sort((x, y) =>
             {
-                //if (x.Priority > y.Priority)
                 if (x.Weight > y.Weight)
                 {
                     return -1;
                 }
-                //else if (x.Priority < y.Priority)
                 else if (x.Weight < y.Weight)
                 {
                     return 1;
