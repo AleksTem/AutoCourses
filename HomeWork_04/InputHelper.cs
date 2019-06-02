@@ -4,7 +4,6 @@ namespace HomeWork_04
 {
     class InputHelper
     {
-
         public static string GetPhrase(int retryCount)
         {
             string input, result = string.Empty;

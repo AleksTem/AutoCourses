@@ -17,9 +17,13 @@ namespace HomeWork_04
 
         public static string Reverse(string source)
         {
-            var ary = source.ToCharArray();
-            Array.Reverse(ary);
-            return new string(ary);
+            char[] ary = source.ToCharArray();
+            char[] result = new char[ary.Length];
+            for (int i = 0, j = ary.Length - 1; i < ary.Length; i++, j--)
+            {
+                result[i] = ary[j];
+            }
+            return new string(result);
         }
 
         private static string CleanInput(string strIn)
