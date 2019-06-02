@@ -9,17 +9,20 @@ namespace HomeWork_06.Garlands
         {
             for (int i = 0; i < garlandLenght; i++)
             {
-                _garland[i] = new Bulb(i);
+                _garland[i] = new Bulb();
             }
         }
 
         public override void PrintGarlandsStatus(bool evenMinute)
         {
             Console.WriteLine("Plain garland:");
-            foreach (Bulb x in _garland)
+            SetLightStatus(evenMinute);
+            for (int i = 0; i < _garland.Count; i++)
             {
-                Console.WriteLine($"Bulb { x.Index } is {x.GetStatus(evenMinute)}");
+                Console.WriteLine($"Bulb { _garland[i] } is {_garland[i].Status}");
             }
         }
+
+
     }
 }

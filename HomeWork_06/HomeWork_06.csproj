@@ -43,10 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bulbs\Light.cs" />
+    <Compile Include="CustomEnums\Light.cs" />
     <Compile Include="Bulbs\ColoredBulb.cs" />
     <Compile Include="Bulbs\Bulb.cs" />
-    <Compile Include="Bulbs\BulbColor.cs" />
+    <Compile Include="CustomEnums\BulbColor.cs" />
     <Compile Include="Garlands\BaseGarland.cs" />
     <Compile Include="Garlands\ColoredGarland.cs" />
     <Compile Include="Garlands\PlainGarland.cs" />

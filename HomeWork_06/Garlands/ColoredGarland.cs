@@ -6,9 +6,9 @@ namespace HomeWork_06.Garlands
 {
     class ColoredGarland : BaseGarland
     {
-        private ColoredBulb[] _garland;
-        
-        public ColoredGarland(int garlandLength) : base (garlandLength)
+        private new List<ColoredBulb> _garland;
+
+        public ColoredGarland(int garlandLength) : base(garlandLength)
         {
             _garland = new ColoredBulb[garlandLength];
             int bulbColors = Enum.GetValues(typeof(BulbColor)).Length;
@@ -16,21 +16,27 @@ namespace HomeWork_06.Garlands
 
             for (int j = 1; j < bulbColors; j++)
             {
-                BulbColor color = Enum.IsDefined(typeof(BulbColor), j) ? (BulbColor)j : BulbColor.NoColor;
-                for (int i = j-1; i < garlandLength; i += step)
+                BulbColor color = Enum.IsDefined(typeof(BulbColor), j) ? (BulbColor)j : BulbColor.White;
+                for (int i = j - 1; i < garlandLength; i += step)
                 {
                     _garland[i] = new ColoredBulb(color, i);
                 }
-            }            
+            }
         }
 
         public override void PrintGarlandsStatus(bool evenMinute)
         {
             Console.WriteLine("Colored garland:");
-            foreach (ColoredBulb x in _garland)
+            SetLightStatus(evenMinute);
+            for (int i = 0; i < _garland.Count; i++)
             {
-                Console.WriteLine($"Bulb { x.Index } ({x.Color}) is {x.GetStatus(evenMinute)}");
+                ConsoleColor currentColor = Console.BackgroundColor;
+                Console.BackgroundColor = (ConsoleColor)_garland[i].BulbColor;
+                Console.WriteLine($"Bulb { i } ({_garland[i].BulbColor}) is {(_garland[i].Status ? "On" : "Off")}");
+                Console.BackgroundColor = currentColor;
             }
         }
+
+
     }
 }

@@ -1,19 +1,14 @@
-﻿using System;
-
-namespace HomeWork_06.Bulbs
+﻿namespace HomeWork_06.Bulbs
 {
     internal class Bulb
     {
-        public int Index { get; private set; }
+        public BulbColor BulbColor { get; set; }
+        public bool Status { get; set; }
 
-        public Bulb(int index)
+        public Bulb()
         {
-            Index = index;
-        }
-
-        public Light GetStatus(bool evenMinute)
-        {
-            return !(Index % 2 == 0 ^ evenMinute) ? Light.On : Light.Off;
+            BulbColor = BulbColor.White;
+            Status = false;
         }
     }
 }
