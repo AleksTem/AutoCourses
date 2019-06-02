@@ -12,7 +12,7 @@ namespace HomeWork_05
             PrintCommands();
             do
             {
-                Console.Write("Command: ");
+                Console.Write("Command: \n");
                 choice = Console.ReadLine();
 
                 switch (choice)

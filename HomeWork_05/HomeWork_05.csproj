@@ -48,15 +48,16 @@
   <ItemGroup>
     <Compile Include="CustomEnums\Priority.cs" />
     <Compile Include="CustomEnums\Complexity.cs" />
+    <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomEntities\Schedule.cs" />
     <Compile Include="CustomEntities\Task.cs" />
-    <Compile Include="CustomEntities\TaskFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

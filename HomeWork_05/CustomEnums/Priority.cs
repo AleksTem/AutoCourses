@@ -1,8 +1,8 @@
 ﻿namespace HomeWork_05.CustomEnums
 {
-    internal enum Priority
+    public enum Priority
     {
-        Low,
+        Low = 1,
         Middle,
         High
     }

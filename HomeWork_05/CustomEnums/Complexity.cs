@@ -1,6 +1,6 @@
 ﻿namespace HomeWork_05.CustomEnums
 {
-    internal enum Complexity
+    public enum Complexity
     {
         Light = 1,
         Medium = 2,

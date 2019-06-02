@@ -1,71 +1,67 @@
 ﻿
 using HomeWork_05.CustomEnums;
+using HomeWork_05.Helpers;
 using System;
-using System.Text;
 
 namespace HomeWork_05.CustomEntities
 {
-    internal class Task
+    public class Task
     {
+        #region Properties
+        private string _description;
+        private readonly Priority _priority;
+        private readonly Complexity _complexity;
+        #endregion
+
+
         #region Fields
-        internal string Description { get; set; }
-        internal Priority Priority { get; set; }
-        internal Complexity Complexity { get; set; }
+        public string Description
+        {
+            get => _description;
+            set
+            {
+                bool parseResult = default(bool);
+                string result;
+                do
+                {
+                    Console.WriteLine("Description: ");
+                    result = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(result) || string.IsNullOrEmpty(result))
+                    {
+                        Console.WriteLine("Description can not be empty");
+                    }
+                    else
+                    {
+                        parseResult = true;
+                        _description = result;
+                    }
+                } while (!parseResult);
+            }
+        }
+        public Priority Priority
+        {
+            get => _priority;
+        }
+        public Complexity Complexity
+        {
+            get => _complexity;
+        }
+
+        public int Weight { get => 100 * (int)_priority + 10 * (int)_complexity; }
         #endregion Fields
 
         #region Constructors
-        internal Task()
+        public Task()
         {
-            Description = RequestDescription();
-            Priority = RequestPriority();
-            Complexity = RequestComplexity();
+            Console.WriteLine("Create New Task.");
+            Description = "";
+            _priority = Helper.RequestForEnumValue<Priority>();
+            _complexity = Helper.RequestForEnumValue<Complexity>();
         }
 
         #endregion Constructors
 
         #region Methods
-        internal static string RequestDescription()
-        {
-            Console.WriteLine("Create New Task.");
-            Console.WriteLine("Description: ");
-            return Console.ReadLine();
-        }
-
-        internal static Priority RequestPriority()
-        {
-            Priority result;
-            bool outcome;
-            do
-            {
-                Console.Write($"Priority ({PrintEnumDefinition<Priority>()})?: ");
-                string _pr = Console.ReadLine();
-                outcome = Enum.TryParse<Priority>(_pr, true, out result) & Enum.IsDefined(typeof(Priority), result);
-            } while (!outcome);
-
-            return result;
-        }
-
-        internal static Complexity RequestComplexity()
-        {
-            Complexity result;
-            bool outcome;
-            do
-            {
-                Console.Write($"Complexity ({PrintEnumDefinition<Complexity>()})?: ");
-                string _c = Console.ReadLine();
-                outcome = Enum.TryParse<Complexity>(_c, true, out result) & Enum.IsDefined(typeof(Complexity), result);
-            } while (!outcome);
-            return result;
-        }
-
-        internal static string PrintEnumDefinition<T>()
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (int index in Enum.GetValues(typeof(T)))
-                sb.Append($"{index}={Enum.GetName(typeof(T), index)} ");
-            return sb.ToString();
-        }
-
         public override string ToString()
         {
             return $"=====\nTask:{Description}\n Priority: {Enum.GetName(typeof(Priority), Priority)}" +
