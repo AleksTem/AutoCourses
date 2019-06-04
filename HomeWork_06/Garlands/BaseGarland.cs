@@ -12,13 +12,13 @@ namespace HomeWork_06.Garlands
             _garland = new List<Bulb>(garlandLength);
             for (int i = 0; i < garlandLength; i++)
             {
-                _garland[i] = new Bulb();
+                _garland.Add(new Bulb());
             }
         }
 
         public abstract void PrintGarlandsStatus(bool evenMinute);
 
-        public void SetLightStatus(bool evenMinute)
+        public virtual void SetLightStatus(bool evenMinute)
         {
             for (int i = 0; i < _garland.Count; i++)
             {

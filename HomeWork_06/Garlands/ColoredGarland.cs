@@ -10,17 +10,13 @@ namespace HomeWork_06.Garlands
 
         public ColoredGarland(int garlandLength) : base(garlandLength)
         {
-            _garland = new ColoredBulb[garlandLength];
+            _garland = new List<ColoredBulb>(garlandLength);
             int bulbColors = Enum.GetValues(typeof(BulbColor)).Length;
-            int step = bulbColors - 1;
 
-            for (int j = 1; j < bulbColors; j++)
+            for (int i = 0; i < garlandLength; i++)
             {
-                BulbColor color = Enum.IsDefined(typeof(BulbColor), j) ? (BulbColor)j : BulbColor.White;
-                for (int i = j - 1; i < garlandLength; i += step)
-                {
-                    _garland[i] = new ColoredBulb(color, i);
-                }
+                BulbColor color = (BulbColor)(i % bulbColors);
+                _garland.Add(new ColoredBulb(color));
             }
         }
 
@@ -30,10 +26,26 @@ namespace HomeWork_06.Garlands
             SetLightStatus(evenMinute);
             for (int i = 0; i < _garland.Count; i++)
             {
-                ConsoleColor currentColor = Console.BackgroundColor;
-                Console.BackgroundColor = (ConsoleColor)_garland[i].BulbColor;
-                Console.WriteLine($"Bulb { i } ({_garland[i].BulbColor}) is {(_garland[i].Status ? "On" : "Off")}");
-                Console.BackgroundColor = currentColor;
+                ConsoleColor color;
+                Enum.TryParse(_garland[i].BulbColor.ToString(), out color);
+
+                Console.Write($"Bulb #{ i } ");
+                Console.ForegroundColor = color;
+                Console.Write(_garland[i].BulbColor);
+                Console.ResetColor();
+                Console.WriteLine($" is {(_garland[i].Status ? "On" : "Off")}");
+                //Console.WriteLine($"Bulb { i } ({_garland[i].BulbColor}) is {(_garland[i].Status ? "On" : "Off")}");
+
+
+
+            }
+        }
+
+        public override void SetLightStatus(bool evenMinute)
+        {
+            for (int i = 0; i < _garland.Count; i++)
+            {
+                _garland[i].Status = (i % 2 == 0 ^ evenMinute) ? true : false;
             }
         }
 

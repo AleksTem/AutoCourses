@@ -19,7 +19,7 @@ namespace HomeWork_06.Garlands
             SetLightStatus(evenMinute);
             for (int i = 0; i < _garland.Count; i++)
             {
-                Console.WriteLine($"Bulb { _garland[i] } is {_garland[i].Status}");
+                Console.WriteLine($"Bulb {i} is {(_garland[i].Status ? "On" : "Off")}");
             }
         }
 
