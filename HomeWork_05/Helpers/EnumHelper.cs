@@ -3,7 +3,7 @@ using System.Text;
 
 namespace HomeWork_05.Helpers
 {
-    class Helper
+    class EnumHelper
     {
         public static string PrintEnumDefinition<TEnum>() where TEnum : struct
         {

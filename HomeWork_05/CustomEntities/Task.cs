@@ -20,7 +20,7 @@ namespace HomeWork_05.CustomEntities
             get => _description;
             set
             {
-                bool parseResult = default(bool);
+                bool IsDescriptionNullOrEmpty = default(bool);
                 string result;
                 do
                 {
@@ -32,10 +32,10 @@ namespace HomeWork_05.CustomEntities
                     }
                     else
                     {
-                        parseResult = true;
+                        IsDescriptionNullOrEmpty = true;
                         _description = result;
                     }
-                } while (!parseResult);
+                } while (!IsDescriptionNullOrEmpty);
             }
         }
         public Priority Priority
@@ -55,8 +55,8 @@ namespace HomeWork_05.CustomEntities
         {
             Console.WriteLine("Create New Task.");
             Description = "";
-            _priority = Helper.RequestForEnumValue<Priority>();
-            _complexity = Helper.RequestForEnumValue<Complexity>();
+            _priority = EnumHelper.RequestForEnumValue<Priority>();
+            _complexity = EnumHelper.RequestForEnumValue<Complexity>();
         }
 
         #endregion Constructors

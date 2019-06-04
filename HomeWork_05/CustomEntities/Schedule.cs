@@ -42,7 +42,7 @@ namespace HomeWork_05.CustomEntities
 
         public void SelectTasksByPriority()
         {
-            Priority selectedPriority = Helper.RequestForEnumValue<Priority>();
+            Priority selectedPriority = EnumHelper.RequestForEnumValue<Priority>();
             List<Task> list = _tasks.FindAll(x => x.Priority.Equals(selectedPriority)).ToList();
             Console.WriteLine($"There is {list.Count} tasks with priority \"{Enum.GetName(typeof(Priority), selectedPriority)}\"");
             foreach (Task task in list)
@@ -86,9 +86,13 @@ namespace HomeWork_05.CustomEntities
 
         public void PrintAllTasks()
         {
-            for (int i = 0; i < _tasks.Count; i++)
+            //_tasks.ForEach(task =>
+            //{
+            //    Console.WriteLine(task);
+            //});
+            foreach (var task in _tasks)
             {
-                Console.WriteLine(_tasks[i]);
+                Console.WriteLine(task);
             }
         }
 
