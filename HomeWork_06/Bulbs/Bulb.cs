@@ -2,11 +2,11 @@
 {
     internal class Bulb
     {
-        public bool Status { get; set; }
+        public Light Status { get; set; }
 
         public Bulb()
         {
-            Status = false;
+            Status = Light.Off;
         }
     }
 }

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace HomeWork_06.Garlands
 {
-    internal abstract class BaseGarland
+    internal abstract class BaseGarland<TBulbType> where TBulbType : Bulb
     {
-        protected List<Bulb> _garland;
+        protected List<TBulbType> _garland;
 
         protected BaseGarland(int garlandLength)
         {
-            _garland = new List<Bulb>(garlandLength);
+            _garland = new List<TBulbType>(garlandLength);
             for (int i = 0; i < garlandLength; i++)
             {
-                _garland.Add(new Bulb());
+                _garland.Add(new TBulbType());
             }
         }
 
@@ -22,7 +22,7 @@ namespace HomeWork_06.Garlands
         {
             for (int i = 0; i < _garland.Count; i++)
             {
-                _garland[i].Status = (i % 2 == 0 ^ evenMinute) ? true : false;
+                _garland[i].Status = (i % 2 == 0 ^ evenMinute) ? Light.On : Light.Off;
             }
         }
     }

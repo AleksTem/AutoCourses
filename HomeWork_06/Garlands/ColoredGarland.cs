@@ -33,11 +33,7 @@ namespace HomeWork_06.Garlands
                 Console.ForegroundColor = color;
                 Console.Write(_garland[i].BulbColor);
                 Console.ResetColor();
-                Console.WriteLine($" is {(_garland[i].Status ? "On" : "Off")}");
-                //Console.WriteLine($"Bulb { i } ({_garland[i].BulbColor}) is {(_garland[i].Status ? "On" : "Off")}");
-
-
-
+                Console.WriteLine($" is {_garland[i].Status}");
             }
         }
 
@@ -45,7 +41,7 @@ namespace HomeWork_06.Garlands
         {
             for (int i = 0; i < _garland.Count; i++)
             {
-                _garland[i].Status = (i % 2 == 0 ^ evenMinute) ? true : false;
+                _garland[i].Status = (i % 2 == 0 ^ evenMinute) ? Light.On : Light.Off;
             }
         }
 
