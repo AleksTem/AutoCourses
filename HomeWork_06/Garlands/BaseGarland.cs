@@ -10,15 +10,11 @@ namespace HomeWork_06.Garlands
         protected BaseGarland(int garlandLength)
         {
             _garland = new List<TBulbType>(garlandLength);
-            for (int i = 0; i < garlandLength; i++)
-            {
-                _garland.Add(new TBulbType());
-            }
         }
 
         public abstract void PrintGarlandsStatus(bool evenMinute);
 
-        public virtual void SetLightStatus(bool evenMinute)
+        public void SetLightStatusForCurrentMinute(bool evenMinute)
         {
             for (int i = 0; i < _garland.Count; i++)
             {
