@@ -2,7 +2,6 @@
 {
     internal enum BulbColor
     {
-        //White,
         Red,
         Yellow,
         Green,
