@@ -1,6 +1,5 @@
 ﻿using HomeWork_06.Bulbs;
 using System;
-using System.Collections.Generic;
 
 namespace HomeWork_06.Garlands
 {
@@ -23,7 +22,7 @@ namespace HomeWork_06.Garlands
             Console.WriteLine("Colored garland:");
             for (int i = 0; i < _garland.Count; i++)
             {
-                Console.Write($"Bulb #{ i } ");
+                Console.Write($"Bulb #{ i + 1 } ");
 
                 Enum.TryParse(_garland[i].BulbColor.ToString(), out ConsoleColor color);
                 Console.ForegroundColor = color;

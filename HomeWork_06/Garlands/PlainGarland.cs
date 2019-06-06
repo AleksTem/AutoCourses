@@ -19,7 +19,7 @@ namespace HomeWork_06.Garlands
             Console.WriteLine("Plain garland:");
             for (int i = 0; i < _garland.Count; i++)
             {
-                Console.WriteLine($"Bulb {i} is {_garland[i].Status}");
+                Console.WriteLine($"Bulb {i + 1} is {_garland[i].Status}");
             }
         }
     }
