@@ -47,7 +47,7 @@ namespace HomeWork_05.CustomEntities
             get => _complexity;
         }
 
-        public int Weight { get => 100 * (int)_priority + 10 * (int)_complexity; }
+        public int Weight { get => 100 * (int)_priority + 10 * EnumHelper.GetEnumValueAttribute<Complexity>(_complexity); } //(int)_complexity; }
         #endregion Fields
 
         #region Constructors

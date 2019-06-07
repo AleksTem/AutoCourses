@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Text;
 
 namespace HomeWork_05.Helpers
@@ -23,10 +24,18 @@ namespace HomeWork_05.Helpers
             {
                 Console.Write($"{typeof(TEnum).Name} ({PrintEnumDefinition<TEnum>()})?: ");
                 string _pr = Console.ReadLine();
-                parseResult = Enum.TryParse(_pr, ignoreCase: true, out result)
+                parseResult = Enum.TryParse(_pr, ignoreCase: true, result: out result)
                     & Enum.IsDefined(typeof(TEnum), result);
             } while (!parseResult);
             return result;
+        }
+
+        public static int GetEnumValueAttribute<TEnum>(Enum value) where TEnum : struct
+        {
+            // Get the EnumValue attribute value for the enum value
+            FieldInfo fi = value.GetType().GetField(value.ToString());
+            EnumValueAttribute attribute = (EnumValueAttribute)fi.GetCustomAttribute(typeof(EnumValueAttribute), false);
+            return attribute.EnumValue;
         }
     }
 }

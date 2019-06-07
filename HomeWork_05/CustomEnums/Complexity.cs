@@ -2,8 +2,13 @@
 {
     public enum Complexity
     {
+        [EnumValue(1)]
         Light = 1,
-        Medium = 2,
-        Complex = 4
+
+        [EnumValue(2)]
+        Medium,
+
+        [EnumValue(4)]
+        Complex
     }
 }

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomAttributes\EnumValueAttribute.cs" />
     <Compile Include="CustomEnums\Priority.cs" />
     <Compile Include="CustomEnums\Complexity.cs" />
     <Compile Include="Helpers\EnumHelper.cs" />
