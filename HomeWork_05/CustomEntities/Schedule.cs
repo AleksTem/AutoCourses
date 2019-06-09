@@ -36,7 +36,7 @@ namespace HomeWork_05.CustomEntities
         {
             Task task = new Task();
             _tasks.Add(task);
-            TotalHours += (int)task.Complexity;
+            TotalHours += EnumHelper.GetEnumValueAttribute<Complexity>(task.Complexity);
             Console.WriteLine("New task added.");
         }
 
@@ -75,7 +75,7 @@ namespace HomeWork_05.CustomEntities
             Console.WriteLine("Possible complete next tasks:");
             for (int i = 0; i < _tasks.Count; i++)
             {
-                int taskDuration = (int)_tasks[i].Complexity;
+                int taskDuration = EnumHelper.GetEnumValueAttribute<Complexity>(_tasks[i].Complexity);
                 if (availableHours >= taskDuration)
                 {
                     Console.Write(_tasks[i]);
