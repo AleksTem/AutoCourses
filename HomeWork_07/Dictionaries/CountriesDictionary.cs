@@ -35,7 +35,7 @@ namespace HomeWork_07
             }
             string cleanString = PalindromAnalizer.CleanInput(country);
 
-            cleanString.FirstLetterToUpperCaseOrConvertNullToEmptyString()
+            cleanString.FirstLetterToUpperCaseOrConvertNullToEmptyString();
             //country.
             var elem = _dictionary.Single(x => x.Value.Name.Equals(country));
             elem.Value.IsTelenorSupported = IsTelenorSupportedStatus;
