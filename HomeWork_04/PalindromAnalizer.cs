@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace HomeWork_04
 {
-    class PalindromAnalizer
+    public class PalindromAnalizer
     {
         public bool CheckForPalindrome(string input)
         {
@@ -26,7 +26,7 @@ namespace HomeWork_04
             return new string(result);
         }
 
-        private static string CleanInput(string strIn)
+        public static string CleanInput(string strIn)
         {
             try
             {
