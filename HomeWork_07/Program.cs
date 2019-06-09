@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HomeWork_07
 {
@@ -12,14 +6,14 @@ namespace HomeWork_07
     {
         static void Main(string[] args)
         {
-            string fileName = "EU_Countries.txt";
-            CountriesDictionary countriesDictionary = new CountriesDictionary(fileName)
+            CountriesDictionary countriesDictionary = new CountriesDictionary(BaseConfigs.CountriesFile)
             {
-                "Ukraine"
+            "Ukraine"
             };
-            countriesDictionary.SetTelenorSupportedStatus("Hungary", true);
-            countriesDictionary.SetTelenorSupportedStatus("Denmark", true);
-            Helper.PrintCountries(ref countriesDictionary, false);
+            countriesDictionary.SetTelenorSupportedStatus("Hungary", YesNoEnum.Yes);
+            countriesDictionary.SetTelenorSupportedStatus("DeNmark", YesNoEnum.Yes);
+            FileHelper.PrintCountries(countriesDictionary, YesNoEnum.No);
+            FileHelper.WriteDictionaryToFile(countriesDictionary, BaseConfigs.CountriesFile);
             Console.ReadLine();
         }
     }
