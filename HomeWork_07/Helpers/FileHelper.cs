@@ -9,9 +9,10 @@ namespace HomeWork_07
     {
         internal static void PrintCountries(CountriesDictionary dictionary, YesNoEnum IsTelenorSupportedFilter)
         {
-            foreach (KeyValuePair<int, Country> item in
-                dictionary.Where(x =>
-                    x.Value.IsTelenorSupported.Equals(IsTelenorSupportedFilter)))
+            var telenorSupportedCountries = dictionary.Where(x =>
+                    x.Value.IsTelenorSupported.Equals(IsTelenorSupportedFilter));
+
+            foreach (KeyValuePair<int, Country> item in telenorSupportedCountries)
             {
                 Console.WriteLine($"{item.Value.Name,-20} {item.Value.IsTelenorSupported}");
             }
@@ -29,7 +30,9 @@ namespace HomeWork_07
         {
             using (StreamWriter file = new StreamWriter(filePath))
                 foreach (var entry in dictionary)
-                    file.WriteLine("{0} {1}", entry.Value.Name, entry.Value.IsTelenorSupported);
+                {
+                    file.WriteLine($"{entry.Value.Name,-20} {entry.Value.IsTelenorSupported}");
+                }
         }
     }
 }

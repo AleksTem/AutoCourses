@@ -10,11 +10,12 @@ namespace HomeWork_07
             {
             "Ukraine"
             };
-            countriesDictionary.SetTelenorSupportedStatus("Hungary", YesNoEnum.Yes);
-            countriesDictionary.SetTelenorSupportedStatus("DeNmark", YesNoEnum.Yes);
+            countriesDictionary.SetTelenorSupportedStatus("hUnGa ry", YesNoEnum.Yes);
+            countriesDictionary.SetTelenorSupportedStatus("Denmark", YesNoEnum.Yes);
             FileHelper.PrintCountries(countriesDictionary, YesNoEnum.No);
             FileHelper.WriteDictionaryToFile(countriesDictionary, BaseConfigs.CountriesFile);
             Console.ReadLine();
         }
     }
+
 }

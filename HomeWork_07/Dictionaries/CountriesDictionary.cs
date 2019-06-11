@@ -1,5 +1,4 @@
-﻿using HomeWork_04;
-using HomeWork_07.Helpers;
+﻿using HomeWork_07.Helpers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +13,7 @@ namespace HomeWork_07
         public CountriesDictionary(string filePath)
         {
             _dictionary = FileHelper.ReadCountriesFromFile(filePath);
+            // _dictionary.Add();
         }
 
         public void Add(string country)
@@ -27,18 +27,20 @@ namespace HomeWork_07
             _dictionary.Add(keyRecord, country);
         }
 
-        public void SetTelenorSupportedStatus(string country, YesNoEnum IsTelenorSupportedStatus)
+        public void SetTelenorSupportedStatus(string countryName, YesNoEnum IsTelenorSupportedStatus)
         {
-            if (string.IsNullOrEmpty(country) || string.IsNullOrWhiteSpace(country))
+            if (string.IsNullOrEmpty(countryName) || string.IsNullOrWhiteSpace(countryName))
             {
                 return;
             }
-            string cleanString = PalindromAnalizer.CleanInput(country);
 
-            cleanString.FirstLetterToUpperCaseOrConvertNullToEmptyString();
-            //country.
-            var elem = _dictionary.Single(x => x.Value.Name.Equals(country));
-            elem.Value.IsTelenorSupported = IsTelenorSupportedStatus;
+            var item = _dictionary.FirstOrDefault(x =>
+            x.Value.Name.PrepareForComparison().Equals(countryName.PrepareForComparison())).Value;
+            if (item == null)
+            {
+                throw new System.Exception("Country not found.");
+            }
+            item.IsTelenorSupported = IsTelenorSupportedStatus;
         }
 
         public IEnumerator<KeyValuePair<int, Country>> GetEnumerator()
