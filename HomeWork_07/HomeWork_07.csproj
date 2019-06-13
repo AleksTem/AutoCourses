@@ -60,10 +60,9 @@
   <ItemGroup>
     <Compile Include="Config\BaseConfigs.cs" />
     <Compile Include="CustomEnums\YesNoEnum.cs" />
-    <Compile Include="Dictionaries\CountriesDictionary.cs" />
     <Compile Include="Entities\Country.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
-    <Compile Include="Helpers\StringHelper.cs" />
+    <Compile Include="Helpers\StringExtensiions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

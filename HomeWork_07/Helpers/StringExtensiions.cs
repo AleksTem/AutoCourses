@@ -3,8 +3,15 @@ using System.Text.RegularExpressions;
 
 namespace HomeWork_07.Helpers
 {
-    public static class StringHelper
+    public static class StringExtensiions
     {
+        public static string PrepareForComparison(this string input)
+        {
+            return input.CleanFromSpecSimbols()
+                .ToLower()
+                .FirstLetterToUpperCase();
+        }
+
         /// <summary>
         /// Returns the input string with the first character converted to uppercase, or mutates any nulls passed into string.Empty
         /// </summary>
@@ -20,6 +27,11 @@ namespace HomeWork_07.Helpers
             return new string(a);
         }
 
+        /// <summary>
+        /// Returns the input string without special characters
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static string CleanFromSpecSimbols(this string input)
         {
             try
@@ -33,11 +45,6 @@ namespace HomeWork_07.Helpers
             }
         }
 
-        public static string PrepareForComparison(this string input)
-        {
-            return input.CleanFromSpecSimbols()
-                .ToLower()
-                .FirstLetterToUpperCase();
-        }
+
     }
 }

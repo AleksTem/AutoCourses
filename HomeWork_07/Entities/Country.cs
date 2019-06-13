@@ -3,18 +3,17 @@ namespace HomeWork_07
 {
     public class Country
     {
-        private string _name;
-        public Country(string name)
+        public Country(string name) : this(name, YesNoEnum.No)
         {
-            Name = name;
-            IsTelenorSupported = YesNoEnum.No;
         }
 
-        public string Name
+        public Country(string name, YesNoEnum isTelenorSupported)
         {
-            get => _name;
-            set => _name = value;
+            Name = name;
+            IsTelenorSupported = isTelenorSupported;
         }
+
+        public string Name { get; set; }
         public YesNoEnum IsTelenorSupported { get; set; }
 
 
