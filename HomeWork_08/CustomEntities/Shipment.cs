@@ -15,5 +15,12 @@ namespace HomeWork_08
         public string ID { get; set; }
         public Address Address { get; set; }
         public Order Order { get; set; }
+
+        public new string ToString(bool printWithOrders = false)
+        {
+            return
+                $"\nShipment:\nID: {ID}\n Address: {Address} {(printWithOrders ? $"\nOrder: {Order}" : "")}";
+        }
+
     }
 }

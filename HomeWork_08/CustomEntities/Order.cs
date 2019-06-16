@@ -19,8 +19,13 @@ namespace HomeWork_08
 
 
 
-        public int ID { get; private set; }
-        public Customer Customer { get; private set; }
-        public List<OrderItem> Goods { get; private set; }
+        public int ID { get; set; }
+        public Customer Customer { get; set; }
+        public List<OrderItem> Goods { get; set; }
+
+        public override string ToString()
+        {
+            return $"\tOrder:\n\tID:{ID}\n\tCustomer: {Customer}";
+        }
     }
 }

@@ -12,7 +12,12 @@ namespace HomeWork_08
             Name = faker.Name.FullName();
         }
 
-        public Guid ID { get; private set; }
-        public string Name { get; private set; }
+        public Guid ID { get; set; }
+        public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
