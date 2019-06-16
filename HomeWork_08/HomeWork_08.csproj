@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoBogus, Version=2.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoBogus.2.4.1\lib\net40\AutoBogus.dll</HintPath>
+    </Reference>
+    <Reference Include="Bogus, Version=24.3.0.0, Culture=neutral, PublicKeyToken=fa1bb3f3f218129a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bogus.24.3.0\lib\net40\Bogus.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -46,10 +52,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\BaseConfig.cs" />
+    <Compile Include="CustomEntities\Address.cs" />
     <Compile Include="CustomEntities\Order.cs" />
     <Compile Include="CustomEntities\OrderItem.cs" />
     <Compile Include="CustomEntities\Shipment.cs" />
     <Compile Include="CustomEntities\Customer.cs" />
+    <Compile Include="CustomEnums\ShipmentStatus.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
