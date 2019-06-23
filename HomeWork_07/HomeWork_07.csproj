@@ -62,6 +62,7 @@
     <Compile Include="CustomEnums\YesNoEnum.cs" />
     <Compile Include="Entities\Country.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\Retry.cs" />
     <Compile Include="Helpers\StringExtensiions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
