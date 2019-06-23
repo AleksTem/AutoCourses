@@ -19,7 +19,7 @@ namespace HomeWork_08
         public new string ToString(bool printWithOrders = false)
         {
             return
-                $"\nShipment:\nID: {ID}\n Address: {Address} {(printWithOrders ? $"\nOrder: {Order}" : "")}";
+                $"\nShipment:\nID: {ID}\n Address: {Address} {(printWithOrders ? $"\n{Order}" : "")}";
         }
 
     }

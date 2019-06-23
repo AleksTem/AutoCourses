@@ -27,13 +27,12 @@ namespace HomeWork_08
                         instance.LoadShipmentsFromExistingFile();
                         break;
                     case "3":
-                        instance.PrintShipments();
+                        instance.PrintShipments(IsPrintWithOrder());
                         break;
                 }
             } while (!choice.Equals("4"));
 
         }
-
 
         private static void PrintCommands()
         {
@@ -44,6 +43,16 @@ namespace HomeWork_08
             Console.WriteLine("3 - Print Shipments ");
             Console.WriteLine("4 - Exit");
             Console.WriteLine();
+        }
+        private static bool IsPrintWithOrder()
+        {
+            Console.Write("Print with Orders? (Y/N): ");
+            string userInput = Console.ReadLine();
+            if (userInput.Equals("y") || userInput.Equals("Y"))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

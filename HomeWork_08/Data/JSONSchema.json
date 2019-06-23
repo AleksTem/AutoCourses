@@ -1,0 +1,136 @@
+  1 {
+  2   "definitions": {},
+  3   "$schema": "http://json-schema.org/draft-07/schema#",
+  4   "$id": "http://example.com/root.json",
+  5   "type": "array",
+  6   "title": "The Root Schema",
+  7   "items": {
+  8     "$id": "#/items",
+  9     "type": "object",
+ 10     "title": "The Items Schema",
+ 11     "required": [
+ 12       "ID",
+ 13       "Address",
+ 14       "Order"
+ 15     ],
+ 16     "properties": {
+ 17       "ID": {
+ 18         "$id": "#/items/properties/ID",
+ 19         "type": "string",
+ 20         "title": "The Id Schema",
+ 21         "default": "",
+ 22         "examples": [
+ 23           "ja7mnyvls5"
+ 24         ],
+ 25         "pattern": "^(.*)$"
+ 26       },
+ 27       "Address": {
+ 28         "$id": "#/items/properties/Address",
+ 29         "type": "object",
+ 30         "title": "The Address Schema",
+ 31         "required": [
+ 32           "FullAddress"
+ 33         ],
+ 34         "properties": {
+ 35           "FullAddress": {
+ 36             "$id": "#/items/properties/Address/properties/FullAddress",
+ 37             "type": "string",
+ 38             "title": "The Fulladdress Schema",
+ 39             "default": "",
+ 40             "examples": [
+ 41               "3485 Armando Fork, New Vivianeberg, Uruguay"
+ 42             ],
+ 43             "pattern": "^(.*)$"
+ 44           }
+ 45         }
+ 46       },
+ 47       "Order": {
+ 48         "$id": "#/items/properties/Order",
+ 49         "type": "object",
+ 50         "title": "The Order Schema",
+ 51         "required": [
+ 52           "ID",
+ 53           "Customer",
+ 54           "Goods"
+ 55         ],
+ 56         "properties": {
+ 57           "ID": {
+ 58             "$id": "#/items/properties/Order/properties/ID",
+ 59             "type": "integer",
+ 60             "title": "The Id Schema",
+ 61             "default": 0,
+ 62             "examples": [
+ 63               1
+ 64             ]
+ 65           },
+ 66           "Customer": {
+ 67             "$id": "#/items/properties/Order/properties/Customer",
+ 68             "type": "object",
+ 69             "title": "The Customer Schema",
+ 70             "required": [
+ 71               "ID",
+ 72               "Name"
+ 73             ],
+ 74             "properties": {
+ 75               "ID": {
+ 76                 "$id": "#/items/properties/Order/properties/Customer/properties/ID",
+ 77                 "type": "string",
+ 78                 "title": "The Id Schema",
+ 79                 "default": "",
+ 80                 "examples": [
+ 81                   "c2b6cdf4-5590-a7eb-d8db-cffe1b972854"
+ 82                 ],
+ 83                 "pattern": "^(.*)$"
+ 84               },
+ 85               "Name": {
+ 86                 "$id": "#/items/properties/Order/properties/Customer/properties/Name",
+ 87                 "type": "string",
+ 88                 "title": "The Name Schema",
+ 89                 "default": "",
+ 90                 "examples": [
+ 91                   "Renee Borer"
+ 92                 ],
+ 93                 "pattern": "^(.*)$"
+ 94               }
+ 95             }
+ 96           },
+ 97           "Goods": {
+ 98             "$id": "#/items/properties/Order/properties/Goods",
+ 99             "type": "array",
+100             "title": "The Goods Schema",
+101             "items": {
+102               "$id": "#/items/properties/Order/properties/Goods/items",
+103               "type": "object",
+104               "title": "The Items Schema",
+105               "required": [
+106                 "Product",
+107                 "Amount"
+108               ],
+109               "properties": {
+110                 "Product": {
+111                   "$id": "#/items/properties/Order/properties/Goods/items/properties/Product",
+112                   "type": "string",
+113                   "title": "The Product Schema",
+114                   "default": "",
+115                   "examples": [
+116                     "Shoes"
+117                   ],
+118                   "pattern": "^(.*)$"
+119                 },
+120                 "Amount": {
+121                   "$id": "#/items/properties/Order/properties/Goods/items/properties/Amount",
+122                   "type": "integer",
+123                   "title": "The Amount Schema",
+124                   "default": 0,
+125                   "examples": [
+126                     27
+127                   ]
+128                 }
+129               }
+130             }
+131           }
+132         }
+133       }
+134     }
+135   }
+136 }

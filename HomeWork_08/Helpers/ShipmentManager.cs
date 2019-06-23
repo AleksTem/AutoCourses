@@ -17,7 +17,6 @@ namespace HomeWork_08
                 shipments.Add(new Shipment());
             }
             string json = JsonConvert.SerializeObject(shipments, Formatting.Indented);
-            //Console.WriteLine(json);
         }
 
         public void PrintShipments(bool withOrders = false)
@@ -42,9 +41,9 @@ namespace HomeWork_08
             FileHelper.WriteShipmentsToJSONFile(shipments);
         }
 
-        public void LoadShipmentsFromExistingFile()
+        public bool LoadShipmentsFromExistingFile()
         {
-            shipments = FileHelper.LoadShipmentsFromJSONFile();
+            return FileHelper.LoadShipmentsFromJSONFile(out shipments);
         }
     }
 }

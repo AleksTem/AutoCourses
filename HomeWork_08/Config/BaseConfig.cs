@@ -11,5 +11,6 @@ namespace HomeWork_08
 
         static private string _fileName = "Shipments.json";
         static internal string ShipmentsFile => Path.Combine(AppContext.BaseDirectory, @"..\..\Data\", _fileName);
+        static internal string JsonSchemaFile => Path.Combine(AppContext.BaseDirectory, @"..\..\Data\", "JSONSchema.json");
     }
 }
