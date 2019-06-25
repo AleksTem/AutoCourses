@@ -1,4 +1,7 @@
 ﻿using Bogus;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Text;
 
 namespace HomeWork_08
 {
@@ -6,21 +9,52 @@ namespace HomeWork_08
     {
         public Shipment()
         {
-            Faker faker = new Faker();
-            ID = faker.Random.AlphaNumeric(10);
-            Address = new Address();
-            Order = new Order();
         }
 
-        public string ID { get; set; }
-        public Address Address { get; set; }
-        public Order Order { get; set; }
-
-        public new string ToString(bool printWithOrders = false)
+        public Shipment(bool genetrate)
         {
-            return
-                $"\nShipment:\nID: {ID}\n Address: {Address} {(printWithOrders ? $"\n{Order}" : "")}";
+            if (genetrate)
+            {
+                int ordersCount = BaseConfig.OrdersCount;
+                Faker faker = new Faker();
+                ID = faker.Random.AlphaNumeric(10);
+                Customer = new Customer(true);
+                Address = new Address(true);
+
+                OrdersList = new List<Order>(ordersCount);
+                for (int i = 0; i < ordersCount; i++)
+                {
+                    OrdersList.Add(new Order(true));
+                }
+            }
         }
 
+        [JsonProperty("shipment_id")]
+        public string ID { get; set; }
+
+        [JsonProperty("address")]
+        public Address Address { get; set; }
+
+        [JsonProperty("customer")]
+        public Customer Customer { get; set; }
+
+        [JsonProperty("order_list")]
+        public List<Order> OrdersList { get; set; }
+
+        public string ToString(bool printWithOrders = false)
+        {
+            string baseStr = $"\nShipment:\nID: {ID}\n Customer: {Customer}\nAddress: {Address}";
+            if (printWithOrders)
+            {
+                StringBuilder strBuilder = new StringBuilder();
+                strBuilder.Append(baseStr);
+                OrdersList.ForEach(order => strBuilder.Append(order));
+                return strBuilder.ToString();
+            }
+            else
+            {
+                return baseStr;
+            }
+        }
     }
 }

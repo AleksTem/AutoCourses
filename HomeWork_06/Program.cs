@@ -1,9 +1,5 @@
 ﻿using HomeWork_06.Garlands;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HomeWork_06
 {
@@ -53,7 +49,7 @@ namespace HomeWork_06
                 Console.Write("Input length for colored garland: ");
                 result = int.TryParse(Console.ReadLine(), out coloredGarlandLength);
             } while (!(result && coloredGarlandLength > 0));
-            
+
             PlainGarland plainGarland = new PlainGarland(plainGarlandLength);
             ColoredGarland coloredGarland = new ColoredGarland(coloredGarlandLength);
 

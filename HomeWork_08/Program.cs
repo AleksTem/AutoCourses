@@ -22,6 +22,7 @@ namespace HomeWork_08
                     case "1":
                         instance.GenerateShipments();
                         instance.WriteShipmentsToFile();
+                        instance.PrintShipments(withOrders: true);
                         break;
                     case "2":
                         instance.LoadShipmentsFromExistingFile();

@@ -1,18 +1,37 @@
 ﻿using Bogus;
+using Newtonsoft.Json;
 
 namespace HomeWork_08
 {
     public class Address
     {
-        public Address()
+        //public Address()
+        //{
+        //}
+
+        public Address(bool generate)
         {
-            FullAddress = new Faker().Address.FullAddress();
+            if (generate)
+            {
+                Faker faker = new Faker();
+                Country = faker.Address.Country();
+                ZipCode = faker.Address.ZipCode();
+                Street = faker.Address.StreetAddress(useFullAddress: true);
+            }
         }
-        public string FullAddress { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("zip")]
+        public string ZipCode { get; set; }
+
+        [JsonProperty("street")]
+        public string Street { get; set; }
 
         public override string ToString()
         {
-            return FullAddress;
+            return $"{Country} {ZipCode} {Street}";
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace HomeWork_08
 {
@@ -8,24 +11,37 @@ namespace HomeWork_08
 
         public Order()
         {
-            ID = counterID++;
-            Customer = new Customer();
-            Goods = new List<OrderItem>(BaseConfig.OrdersCount);
-            for (int i = 0; i < BaseConfig.OrdersCount - 1; i++)
+        }
+
+        public Order(bool generate)
+        {
+            if (generate)
             {
-                Goods.Add(new OrderItem());
+                ID = counterID++;
+                int itemsCount = BaseConfig.ItemsCount;
+                Goods = new List<OrderItem>(itemsCount);
+                for (int i = 0; i < itemsCount; i++)
+                {
+                    Goods.Add(new OrderItem(true));
+                }
             }
         }
 
 
-
+        [JsonProperty("order_id")]
         public int ID { get; set; }
-        public Customer Customer { get; set; }
+
+        [JsonProperty("goods")]
         public List<OrderItem> Goods { get; set; }
 
         public override string ToString()
         {
-            return $"\tOrder:\n\tID:{ID}\n\tCustomer: {Customer}";
+            StringBuilder strBuilder = new StringBuilder();
+            strBuilder.Append($"\n\tOrder:\n\tID:{ID}\n");
+            Goods.ForEach(good => strBuilder.Append(good));
+            decimal totalSum = Goods.Sum(x => x.SumPrice);
+            strBuilder.Append($"\t\t\tTotal: {totalSum}");
+            return strBuilder.ToString();
         }
     }
 }

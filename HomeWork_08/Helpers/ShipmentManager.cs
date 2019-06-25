@@ -12,9 +12,9 @@ namespace HomeWork_08
         public void GenerateShipments()
         {
             shipments = new List<Shipment>(BaseConfig.ShipmentsCount);
-            for (int i = 0; i < BaseConfig.ShipmentsCount - 1; i++)
+            for (int i = 0; i < BaseConfig.ShipmentsCount; i++)
             {
-                shipments.Add(new Shipment());
+                shipments.Add(new Shipment(true));
             }
             string json = JsonConvert.SerializeObject(shipments, Formatting.Indented);
         }
